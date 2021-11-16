@@ -10,11 +10,57 @@ using System.Windows.Forms;
 
 namespace GUI_08_RandomNumber
 {
-  public partial class Form1 : Form
-  {
-    public Form1()
+    public partial class Form1 : Form
     {
-      InitializeComponent();
+        private int numberToGuess;
+        private int numberEntered;
+        
+        private void Setup()
+        {
+            panelSetup.Visible = true;
+            panelGuess.Visible = false;
+        }
+
+        private void Guess()
+        {
+            panelSetup.Visible = false;
+            panelGuess.Visible = true;
+        }
+
+        private void Check()
+        {
+            if (numberEntered == numberToGuess)
+            {
+                MessageBox.Show("Bingo!");
+            }
+            else
+            {
+                if (numberEntered > numberToGuess)
+                {
+                    MessageBox.Show("Too high!");
+                }
+                else
+                {
+                    MessageBox.Show("Too low!");
+                }
+            }
+        }
+        public Form1()
+        {
+            InitializeComponent();
+            Setup();
+        }
+
+        private void buttonSubmitGuess_Click(object sender, EventArgs e)
+        {
+            numberEntered = int.Parse(textBoxGuess.Text);
+            Check();
+        }
+
+        private void buttonSetupDone_Click(object sender, EventArgs e)
+        {
+            numberToGuess = int.Parse(textBoxNumberToGuess.Text);
+            Guess();
+        }
     }
-  }
 }
