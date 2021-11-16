@@ -35,14 +35,7 @@ namespace GUI_08_RandomNumber
             }
             else
             {
-                if (numberEntered > numberToGuess)
-                {
-                    MessageBox.Show("Too high!");
-                }
-                else
-                {
-                    MessageBox.Show("Too low!");
-                }
+                MessageBox.Show(numberEntered > numberToGuess ? "Too high!" : "Too low!");
             }
         }
         public Form1()
